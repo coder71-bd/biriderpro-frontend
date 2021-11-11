@@ -1,6 +1,7 @@
 import { Alert, Grid, Snackbar } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import useAuth from '../../../hooks/useAuth';
 import MyOrderCard from './MyOrderCard/MyOrderCard';
 
 const MyOrders = () => {
@@ -10,11 +11,7 @@ const MyOrders = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  // const { user } = useAuth();
-
-  const user = {
-    email: 'user1@gmail.com',
-  };
+  const { user } = useAuth();
 
   useEffect(() => {
     axios

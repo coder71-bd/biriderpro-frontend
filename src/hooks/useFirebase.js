@@ -56,8 +56,8 @@ const useFirebase = () => {
 
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        const destination = location?.state?.from || '/';
-        history.replace(destination);
+        const redirect_uri = location?.state?.from || '/';
+        history.replace(redirect_uri);
         setAuthError('');
       })
       .catch((error) => setAuthError(error.message))
@@ -104,6 +104,7 @@ const useFirebase = () => {
     user,
     admin,
     isLoading,
+    setAuthError,
     authError,
     processSignUp,
     processSignIn,

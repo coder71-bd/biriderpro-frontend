@@ -3,12 +3,17 @@ import { AppBar, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import { cyan, purple } from '@mui/material/colors';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
-import { NavLink, useRouteMatch } from 'react-router-dom';
+import { NavLink, useHistory, useRouteMatch } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import AdminSidebar from './AdminSidebar/AdminSidebar';
 
 const AdminHeader = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const history = useHistory()
+
+  const { logout } = useAuth();
+
   let { url } = useRouteMatch();
 
   const { width } = useWindowDimensions();
@@ -22,6 +27,11 @@ const AdminHeader = () => {
     }
 
     setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  const handleLogOut = () => {
+    logout();
+    history.replace('/')
   };
 
   return (
@@ -129,7 +139,7 @@ const AdminHeader = () => {
             )}
           </Box>
 
-          <Button variant="outlined" color="error">
+          <Button variant="outlined" color="error" onClick={handleLogOut}>
             Logout
           </Button>
         </Toolbar>

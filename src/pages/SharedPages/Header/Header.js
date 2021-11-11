@@ -1,23 +1,26 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import {
+  Alert,
   AppBar,
   Box,
   Button,
   IconButton,
+  Snackbar,
   Toolbar,
   Typography,
 } from '@mui/material';
 import { cyan, purple } from '@mui/material/colors';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import Sidebar from './Sidebar/Sidebar';
 
 const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  // const { user, admin } = useAuth();
-  const user = { email: true };
-  const admin = true;
+  const [open, setOpen] = useState(false);
+
+  const { user, admin, logout } = useAuth();
 
   const { width } = useWindowDimensions();
 
@@ -32,8 +35,21 @@ const Header = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleLogOut = () => {
+    logout();
+  };
+
   return (
     <Box>
+      <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          Successfully logged out
+        </Alert>
+      </Snackbar>
       <AppBar
         position="sticky"
         color="transparent"
@@ -102,30 +118,35 @@ const Header = () => {
                         </Button>
                       </NavLink>
                     )}
-                    <NavLink
-                      to="/explore"
-                      style={{
-                        textDecoration: 'none',
-                        color: 'inherit',
-                        marginTop: 4,
-                      }}
-                    >
-                      <Button color="inherit" sx={{ ml: 3 }}>
-                        Explore
-                      </Button>
-                    </NavLink>
                   </>
                 )}
+                <NavLink
+                  to="/explore"
+                  style={{
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    marginTop: 4,
+                  }}
+                >
+                  <Button color="inherit" sx={{ ml: 3 }}>
+                    Explore
+                  </Button>
+                </NavLink>
               </>
             )}
           </Box>
 
-          {/* <Button variant="outlined" color="error">
-            Logout
-          </Button> */}
-          <Button variant="outlined" color="primary">
-            Login
-          </Button>
+          {user.email ? (
+            <Button variant="outlined" color="error" onClick={handleLogOut}>
+              Logout
+            </Button>
+          ) : (
+            <NavLink to="/login" style={{ textDecoration: 'none' }}>
+              <Button variant="outlined" color="primary">
+                Login
+              </Button>
+            </NavLink>
+          )}
         </Toolbar>
       </AppBar>
       <Sidebar toggleDrawer={toggleDrawer} isDrawerOpen={isDrawerOpen} />
