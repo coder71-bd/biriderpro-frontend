@@ -5,9 +5,9 @@ import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import { NavLink, useRouteMatch } from 'react-router-dom';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
-import AdminSidebar from './AdminSidebar/AdminSidebar';
+import GeneralUserSidebar from './GeneralUserSidebar/GeneralUserSidebar';
 
-const AdminHeader = () => {
+const GeneralUserHeader = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   let { url } = useRouteMatch();
 
@@ -78,7 +78,7 @@ const AdminHeader = () => {
                   </Button>
                 </NavLink>
                 <NavLink
-                  to={`${url}/makeadmin`}
+                  to={`${url}/pay`}
                   style={{
                     textDecoration: 'none',
                     color: 'inherit',
@@ -86,11 +86,11 @@ const AdminHeader = () => {
                   }}
                 >
                   <Button color="inherit" sx={{ ml: 3 }}>
-                    Make Admin
+                    Pay
                   </Button>
                 </NavLink>
                 <NavLink
-                  to={`${url}/addproduct`}
+                  to={`${url}/myorders`}
                   style={{
                     textDecoration: 'none',
                     color: 'inherit',
@@ -98,11 +98,11 @@ const AdminHeader = () => {
                   }}
                 >
                   <Button color="inherit" sx={{ ml: 3 }}>
-                    Add Product
+                    My Orders
                   </Button>
                 </NavLink>
                 <NavLink
-                  to={`${url}/manageallorders`}
+                  to={`${url}/addreview`}
                   style={{
                     textDecoration: 'none',
                     color: 'inherit',
@@ -110,19 +110,7 @@ const AdminHeader = () => {
                   }}
                 >
                   <Button color="inherit" sx={{ ml: 3 }}>
-                    Manage All Orders
-                  </Button>
-                </NavLink>
-                <NavLink
-                  to={`${url}/manageallproducts`}
-                  style={{
-                    textDecoration: 'none',
-                    color: 'inherit',
-                    marginTop: 4,
-                  }}
-                >
-                  <Button color="inherit" sx={{ ml: 3 }}>
-                    Manage All Products
+                    Add Review
                   </Button>
                 </NavLink>
               </>
@@ -134,9 +122,12 @@ const AdminHeader = () => {
           </Button>
         </Toolbar>
       </AppBar>
-      <AdminSidebar toggleDrawer={toggleDrawer} isDrawerOpen={isDrawerOpen} />
+      <GeneralUserSidebar
+        toggleDrawer={toggleDrawer}
+        isDrawerOpen={isDrawerOpen}
+      />
     </Box>
   );
 };
 
-export default AdminHeader;
+export default GeneralUserHeader;

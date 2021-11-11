@@ -60,7 +60,7 @@ const Header = () => {
             }}
           >
             <NavLink
-              to="/home"
+              to="/"
               style={{ textDecoration: 'none', color: 'inherit' }}
             >
               <Typography
@@ -85,7 +85,7 @@ const Header = () => {
                         }}
                       >
                         <Button color="inherit" sx={{ ml: 3 }}>
-                          Dashboard
+                          Admin Dashboard
                         </Button>
                       </NavLink>
                     ) : (

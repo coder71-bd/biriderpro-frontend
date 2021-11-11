@@ -1,9 +1,8 @@
 import { Box, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import { Link, useRouteMatch } from 'react-router-dom';
 
-const AdminSidebar = ({ toggleDrawer, isDrawerOpen }) => {
+const GeneralUserSidebar = ({ toggleDrawer, isDrawerOpen }) => {
   let { url } = useRouteMatch();
-
   return (
     <Drawer open={isDrawerOpen} onClose={toggleDrawer()}>
       <Box
@@ -22,34 +21,26 @@ const AdminSidebar = ({ toggleDrawer, isDrawerOpen }) => {
           </ListItem>
           <ListItem button sx={{ px: 7 }}>
             <Link
-              to={`${url}/makeadmin`}
+              to={`${url}/pay`}
               style={{ textDecoration: 'none', color: 'black' }}
             >
-              <ListItemText>Make Admin</ListItemText>
+              <ListItemText>Pay</ListItemText>
             </Link>
           </ListItem>
           <ListItem button sx={{ px: 7 }}>
             <Link
-              to={`${url}/addproduct`}
+              to={`${url}/myorders`}
               style={{ textDecoration: 'none', color: 'black' }}
             >
-              <ListItemText>Add Product</ListItemText>
+              <ListItemText>My Orders</ListItemText>
             </Link>
           </ListItem>
           <ListItem button sx={{ px: 7 }}>
             <Link
-              to={`${url}/manageallorders`}
+              to={`${url}/addreview`}
               style={{ textDecoration: 'none', color: 'black' }}
             >
-              <ListItemText>Manage All Orders</ListItemText>
-            </Link>
-          </ListItem>
-          <ListItem button sx={{ px: 7 }}>
-            <Link
-              to={`${url}/manageallproducts`}
-              style={{ textDecoration: 'none', color: 'black' }}
-            >
-              <ListItemText>Manage All Products</ListItemText>
+              <ListItemText>Add Review</ListItemText>
             </Link>
           </ListItem>
         </List>
@@ -58,4 +49,4 @@ const AdminSidebar = ({ toggleDrawer, isDrawerOpen }) => {
   );
 };
 
-export default AdminSidebar;
+export default GeneralUserSidebar;
