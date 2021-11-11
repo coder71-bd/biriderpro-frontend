@@ -7,8 +7,13 @@ import {
   Typography,
 } from '@mui/material';
 import Card from '@mui/material/Card';
+import { useHistory } from 'react-router-dom';
 
 const Bikes = ({ bike }) => {
+  const history = useHistory();
+  const handleClick = () => {
+    history.push(`/purchase/${bike._id}`);
+  };
   return (
     <Card sx={{ maxWidth: 375, mx: 'auto' }}>
       <CardMedia
@@ -39,6 +44,7 @@ const Bikes = ({ bike }) => {
           className="submit__btn"
           variant="contained"
           sx={{ backgroundColor: 'info.main' }}
+          onClick={handleClick}
         >
           <span></span>
           <span></span>
