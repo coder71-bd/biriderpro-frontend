@@ -1,7 +1,13 @@
 import React from 'react';
+import Header from '../Header/Header';
 
 const Explore = () => {
-  return <div>user will see atleast 10 products here</div>;
+  return (
+    <>
+      <Header />
+      <div>user will see atleast 10 products here</div>
+    </>
+  );
 };
 
 export default Explore;

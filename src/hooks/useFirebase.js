@@ -79,7 +79,7 @@ const useFirebase = () => {
 
   useEffect(() => {
     axios
-      .get(`baseurl/users/${user.email}`)
+      .get(`https://guarded-sierra-90712.herokuapp.com/users/${user.email}`)
       .then((response) => setAdmin(response.data.admin));
   }, [user.email]);
 
@@ -97,7 +97,7 @@ const useFirebase = () => {
   const saveUser = (email, displayName) => {
     const user = { email, displayName };
 
-    axios.post('baseurl/users', user);
+    axios.post('https://guarded-sierra-90712.herokuapp.com/users', user);
   };
 
   return {
