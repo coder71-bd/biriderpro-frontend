@@ -14,6 +14,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
+import AdminHeader from '../../AdminPages/AdminHeader/AdminHeader';
 import Sidebar from './Sidebar/Sidebar';
 
 const Header = () => {
@@ -44,67 +45,60 @@ const Header = () => {
   };
 
   return (
-    <Box>
-      <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-          Successfully logged out
-        </Alert>
-      </Snackbar>
-      <AppBar
-        position="sticky"
-        color="transparent"
-        sx={{ backgroundColor: cyan['A100'] }}
-      >
-        <Toolbar>
-          {width < 980 && (
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-              onClick={toggleDrawer()}
+    <>
+      {admin ? (
+        <AdminHeader />
+      ) : (
+        <Box>
+          <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+            <Alert
+              onClose={handleClose}
+              severity="success"
+              sx={{ width: '100%' }}
             >
-              <MenuIcon />
-            </IconButton>
-          )}
-          <Box
-            sx={{
-              display: 'flex',
-              flexGrow: 1,
-              alignItems: 'center',
-            }}
+              Successfully logged out
+            </Alert>
+          </Snackbar>
+          <AppBar
+            position="sticky"
+            color="transparent"
+            sx={{ backgroundColor: cyan['A100'] }}
           >
-            <NavLink
-              to="/"
-              style={{ textDecoration: 'none', color: 'inherit' }}
-            >
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ color: purple[500] }}
+            <Toolbar>
+              {width < 980 && (
+                <IconButton
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="menu"
+                  sx={{ mr: 2 }}
+                  onClick={toggleDrawer()}
+                >
+                  <MenuIcon />
+                </IconButton>
+              )}
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexGrow: 1,
+                  alignItems: 'center',
+                }}
               >
-                BIRIDERPRO
-              </Typography>
-            </NavLink>
-            {width > 980 && (
-              <>
-                {user.email && (
+                <NavLink
+                  to="/"
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                >
+                  <Typography
+                    variant="h6"
+                    component="div"
+                    sx={{ color: purple[500] }}
+                  >
+                    BIRIDERPRO
+                  </Typography>
+                </NavLink>
+                {width > 980 && (
                   <>
-                    {admin ? (
-                      <NavLink
-                        to="/admin"
-                        style={{
-                          textDecoration: 'none',
-                          color: 'inherit',
-                          marginTop: 4,
-                        }}
-                      >
-                        <Button color="inherit" sx={{ ml: 3 }}>
-                          Admin Dashboard
-                        </Button>
-                      </NavLink>
-                    ) : (
+                    {user.email && (
                       <NavLink
                         to="/user"
                         style={{
@@ -118,39 +112,39 @@ const Header = () => {
                         </Button>
                       </NavLink>
                     )}
+                    <NavLink
+                      to="/explore"
+                      style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                        marginTop: 4,
+                      }}
+                    >
+                      <Button color="inherit" sx={{ ml: 3 }}>
+                        Explore
+                      </Button>
+                    </NavLink>
                   </>
                 )}
-                <NavLink
-                  to="/explore"
-                  style={{
-                    textDecoration: 'none',
-                    color: 'inherit',
-                    marginTop: 4,
-                  }}
-                >
-                  <Button color="inherit" sx={{ ml: 3 }}>
-                    Explore
+              </Box>
+
+              {user.email ? (
+                <Button variant="outlined" color="error" onClick={handleLogOut}>
+                  Logout
+                </Button>
+              ) : (
+                <NavLink to="/login" style={{ textDecoration: 'none' }}>
+                  <Button variant="outlined" color="primary">
+                    Login
                   </Button>
                 </NavLink>
-              </>
-            )}
-          </Box>
-
-          {user.email ? (
-            <Button variant="outlined" color="error" onClick={handleLogOut}>
-              Logout
-            </Button>
-          ) : (
-            <NavLink to="/login" style={{ textDecoration: 'none' }}>
-              <Button variant="outlined" color="primary">
-                Login
-              </Button>
-            </NavLink>
-          )}
-        </Toolbar>
-      </AppBar>
-      <Sidebar toggleDrawer={toggleDrawer} isDrawerOpen={isDrawerOpen} />
-    </Box>
+              )}
+            </Toolbar>
+          </AppBar>
+          <Sidebar toggleDrawer={toggleDrawer} isDrawerOpen={isDrawerOpen} />
+        </Box>
+      )}
+    </>
   );
 };
 

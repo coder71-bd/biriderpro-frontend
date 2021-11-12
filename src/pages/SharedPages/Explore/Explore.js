@@ -16,7 +16,7 @@ const Explore = () => {
     <>
       <Header />
       <Grid container spacing={3}>
-        {bikes.map((bike) => (
+        {bikes.reverse().map((bike) => (
           <Grid key={bike._id} item xs={12} md={6} lg={4}>
             <Bike bike={bike} />
           </Grid>

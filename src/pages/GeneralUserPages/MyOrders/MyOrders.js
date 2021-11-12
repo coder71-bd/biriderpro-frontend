@@ -1,4 +1,6 @@
+import { Button, Typography } from '@material-ui/core';
 import { Alert, Grid, Snackbar } from '@mui/material';
+import { Box } from '@mui/system';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
@@ -11,6 +13,7 @@ const MyOrders = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
   const { user } = useAuth();
 
   useEffect(() => {
@@ -23,7 +26,18 @@ const MyOrders = () => {
 
   // no bike ordered by user
   if (myOrders.length === 0) {
-    return <div>no order added</div>;
+    return (
+      <Box>
+        <Typography variant="h5">You haven't Ordered any bike yet.</Typography>
+        <Button variant="contained" className="submit__btn">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Order Now
+        </Button>
+      </Box>
+    );
   }
 
   const handleCancelOrder = (id) => {

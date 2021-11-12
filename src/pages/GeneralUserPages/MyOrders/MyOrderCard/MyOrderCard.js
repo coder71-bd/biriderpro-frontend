@@ -41,7 +41,7 @@ const MyOrderCard = ({ myOrder, handleCancelOrder }) => {
               cancelOrderButton={cancelOrderButton}
             />
           }
-          subheader={`will be shipped on ${myOrder.order_time}`}
+          subheader={`Ordered on ${myOrder.order_time}`}
         />
 
         <CardMedia

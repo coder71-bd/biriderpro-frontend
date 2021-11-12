@@ -18,7 +18,18 @@
   width: 100%;
   padding: 10px 0;
   font-size: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  border: none;
+  border-bottom: 1px solid #222;
+  outline: none;
+  background: transparent;
+}
+
+.form__container .input__box textarea {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 20px;
+  margin-bottom: 15px;
   border: none;
   border-bottom: 1px solid #222;
   outline: none;

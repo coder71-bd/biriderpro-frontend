@@ -1,10 +1,9 @@
 import { Box, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../../hooks/useAuth';
 
 const Sidebar = ({ toggleDrawer, isDrawerOpen }) => {
-  // const { user, admin } = useAuth();
-  const user = { email: true };
-  const admin = false;
+  const { user, admin } = useAuth();
 
   return (
     <Drawer open={isDrawerOpen} onClose={toggleDrawer()}>

@@ -1,10 +1,14 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { AuthProvider } from './context/AuthProvider/AuthProvider';
-import AdminDashboard from './pages/AdminPages/AdminDashboard/AdminDashboard';
+import AddProduct from './pages/AdminPages/AddProduct/AddProduct';
+import MakeAdmin from './pages/AdminPages/MakeAdmin/MakeAdmin';
+import ManageAllOrders from './pages/AdminPages/ManageAllOrders/ManageAllOrders';
+import ManageAllProducts from './pages/AdminPages/ManageAllProducts/ManageAllProducts';
 import GeneralUserDashboard from './pages/GeneralUserPages/GeneralUserDashboard/GeneralUserDashboard';
 import Explore from './pages/SharedPages/Explore/Explore';
 import Home from './pages/SharedPages/Home/Home';
 import Login from './pages/SharedPages/Login/Login';
+import PrivateRoute from './pages/SharedPages/PrivateRoute/PrivateRoute';
 import Purchase from './pages/SharedPages/Purchase/Purchase';
 import Register from './pages/SharedPages/Register/Register';
 
@@ -22,15 +26,27 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/purchase/:id">
+          <PrivateRoute path="/purchase/:id">
             <Purchase />
-          </Route>
-          <Route path="/admin">
-            <AdminDashboard />
-          </Route>
-          <Route path="/user">
+          </PrivateRoute>
+          <PrivateRoute path="/addproduct">
+            <AddProduct />
+          </PrivateRoute>
+          <PrivateRoute path="/makeadmin">
+            <MakeAdmin />
+          </PrivateRoute>
+          <PrivateRoute path="/manageallorders">
+            <ManageAllOrders />
+          </PrivateRoute>
+          <PrivateRoute path="/manageallproducts">
+            <ManageAllProducts />
+          </PrivateRoute>
+          <PrivateRoute path="/addproduct">
+            <AddProduct />
+          </PrivateRoute>
+          <PrivateRoute path="/user">
             <GeneralUserDashboard />
-          </Route>
+          </PrivateRoute>
           <Route exact path="/">
             <Home />
           </Route>

@@ -4,8 +4,9 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
-const AdminRoute = ({ children, ...rest }) => {
+const GeneralUserRoute = ({ children, ...rest }) => {
   const { user, admin, isLoading } = useAuth();
+  console.log(admin);
 
   if (isLoading) {
     return (
@@ -33,4 +34,4 @@ const AdminRoute = ({ children, ...rest }) => {
   );
 };
 
-export default AdminRoute;
+export default GeneralUserRoute;

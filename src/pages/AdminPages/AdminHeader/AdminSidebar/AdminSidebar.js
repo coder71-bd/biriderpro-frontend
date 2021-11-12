@@ -1,9 +1,7 @@
 import { Box, Drawer, List, ListItem, ListItemText } from '@mui/material';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const AdminSidebar = ({ toggleDrawer, isDrawerOpen }) => {
-  let { url } = useRouteMatch();
-
   return (
     <Drawer open={isDrawerOpen} onClose={toggleDrawer()}>
       <Box
@@ -14,15 +12,7 @@ const AdminSidebar = ({ toggleDrawer, isDrawerOpen }) => {
         <List>
           <ListItem button sx={{ px: 7 }}>
             <Link
-              to={`${url}`}
-              style={{ textDecoration: 'none', color: 'black' }}
-            >
-              <ListItemText>Home</ListItemText>
-            </Link>
-          </ListItem>
-          <ListItem button sx={{ px: 7 }}>
-            <Link
-              to={`${url}/makeadmin`}
+              to="/makeadmin"
               style={{ textDecoration: 'none', color: 'black' }}
             >
               <ListItemText>Make Admin</ListItemText>
@@ -30,7 +20,7 @@ const AdminSidebar = ({ toggleDrawer, isDrawerOpen }) => {
           </ListItem>
           <ListItem button sx={{ px: 7 }}>
             <Link
-              to={`${url}/addproduct`}
+              to="/addproduct"
               style={{ textDecoration: 'none', color: 'black' }}
             >
               <ListItemText>Add Product</ListItemText>
@@ -38,7 +28,7 @@ const AdminSidebar = ({ toggleDrawer, isDrawerOpen }) => {
           </ListItem>
           <ListItem button sx={{ px: 7 }}>
             <Link
-              to={`${url}/manageallorders`}
+              to="/manageallorders"
               style={{ textDecoration: 'none', color: 'black' }}
             >
               <ListItemText>Manage All Orders</ListItemText>
@@ -46,7 +36,7 @@ const AdminSidebar = ({ toggleDrawer, isDrawerOpen }) => {
           </ListItem>
           <ListItem button sx={{ px: 7 }}>
             <Link
-              to={`${url}/manageallproducts`}
+              to="/manageallproducts"
               style={{ textDecoration: 'none', color: 'black' }}
             >
               <ListItemText>Manage All Products</ListItemText>
