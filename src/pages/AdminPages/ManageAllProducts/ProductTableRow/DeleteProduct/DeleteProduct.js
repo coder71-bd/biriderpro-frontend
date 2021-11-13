@@ -17,13 +17,13 @@ const DeleteProduct = ({ id, handleDeleteProduct }) => {
 
   return (
     <>
-      {/* reject order button */}
+      {/* delete product button */}
       <div onClick={handleOpen}>
         <IconButton>
           <DeleteForeverIcon color="error" fontSize="large" />
         </IconButton>
       </div>
-      {/* reject order popup */}
+      {/* delete product popup */}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -31,7 +31,7 @@ const DeleteProduct = ({ id, handleDeleteProduct }) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogContent>
-          <Alert severity="error">Do you want to reject this product?</Alert>
+          <Alert severity="error">Do you want to delete this product?</Alert>
         </DialogContent>
         <DialogActions>
           <Button

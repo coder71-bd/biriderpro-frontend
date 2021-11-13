@@ -37,7 +37,10 @@ const MyOrders = () => {
           flexDirection: 'column',
         }}
       >
-        <Typography variant="h5">You haven't Ordered any bike yet.</Typography>
+        <Typography variant="h5">
+          You haven't Ordered any bike yet. Or Maybe the admin have removed the
+          product or rejected your order.
+        </Typography>
         <NavLink to="/explore">
           <button className="submit__btn">
             <span></span>
