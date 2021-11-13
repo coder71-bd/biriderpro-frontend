@@ -18,7 +18,7 @@ const Bikes = () => {
   return (
     <Grid container spacing={3}>
       {bikes
-        .splice(0, 6)
+        .slice(0, 6)
         .reverse()
         .map((bike) => (
           <Grid key={bike._id} item xs={12} md={6} lg={4}>

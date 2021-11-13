@@ -1,5 +1,4 @@
 import {
-  CircularProgress,
   Paper,
   Table,
   TableBody,
@@ -7,6 +6,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
 } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios';
@@ -24,8 +24,16 @@ const ManageAllOrders = () => {
 
   if (orders.length === 0) {
     return (
-      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <CircularProgress color="secondary" />
+      <Box
+        sx={{
+          minHeight: 'calc(100vh - 220px)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+        }}
+      >
+        <Typography variant="h5">No users have ordered yet.</Typography>
       </Box>
     );
   }

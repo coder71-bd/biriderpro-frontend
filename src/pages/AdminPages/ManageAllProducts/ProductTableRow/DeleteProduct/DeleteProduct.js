@@ -31,7 +31,7 @@ const DeleteProduct = ({ id, handleDeleteProduct }) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogContent>
-          <Alert severity="error">Do you want to reject this order?</Alert>
+          <Alert severity="error">Do you want to reject this product?</Alert>
         </DialogContent>
         <DialogActions>
           <Button

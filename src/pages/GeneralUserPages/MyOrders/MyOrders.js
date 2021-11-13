@@ -1,5 +1,4 @@
-import { Typography } from '@material-ui/core';
-import { Alert, Grid, Snackbar } from '@mui/material';
+import { Alert, Grid, Snackbar, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios';
 import { useEffect, useState } from 'react';

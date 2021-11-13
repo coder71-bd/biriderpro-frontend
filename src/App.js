@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { AuthProvider } from './context/AuthProvider/AuthProvider';
 import AddProduct from './pages/AdminPages/AddProduct/AddProduct';
 import AdminHeader from './pages/AdminPages/AdminHeader/AdminHeader';
+import AdminRoute from './pages/AdminPages/AdminRoute/AdminRoute';
 import MakeAdmin from './pages/AdminPages/MakeAdmin/MakeAdmin';
 import ManageAllOrders from './pages/AdminPages/ManageAllOrders/ManageAllOrders';
 import ManageAllProducts from './pages/AdminPages/ManageAllProducts/ManageAllProducts';
@@ -33,16 +34,24 @@ function App() {
             <Purchase />
           </PrivateRoute>
           <PrivateRoute path="/addproduct">
-            <AddProduct />
+            <AdminRoute>
+              <AddProduct />
+            </AdminRoute>
           </PrivateRoute>
           <PrivateRoute path="/makeadmin">
-            <MakeAdmin />
+            <AdminRoute>
+              <MakeAdmin />
+            </AdminRoute>
           </PrivateRoute>
           <PrivateRoute path="/manageallorders">
-            <ManageAllOrders />
+            <AdminRoute>
+              <ManageAllOrders />
+            </AdminRoute>
           </PrivateRoute>
           <PrivateRoute path="/manageallproducts">
-            <ManageAllProducts />
+            <AdminRoute>
+              <ManageAllProducts />
+            </AdminRoute>
           </PrivateRoute>
           <PrivateRoute path="/user">
             <GeneralUserDashboard />

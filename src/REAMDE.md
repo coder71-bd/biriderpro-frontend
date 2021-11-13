@@ -1,14 +1,13 @@
-<h1 align="center">BIRIDERPRO Server side</h1>
+<h1 align="center">Biriderpro</h1>
 
-<div>
-Client side implemented through this backend <a href="">BIRIDERPRO</a>
+<div align="center">
+  <h3>
+  <!--add firebase hosting link here-->
+    <a href="https://biriderpro.web.app/">
+      Live Demo
+    </a>
+  </h3>
 </div>
-<p>
-Base URL of bikes item <a href="https://guarded-sierra-90712.herokuapp.com/">BIRIDERPRO</a>
-</p>
-<p>
-Base URL of order item <a href="https://guarded-sierra-90712.herokuapp.com/order">BIRIDERPRO</a>
-</p>
 
 <!-- TABLE OF CONTENTS -->
 
@@ -16,83 +15,22 @@ Base URL of order item <a href="https://guarded-sierra-90712.herokuapp.com/order
 
 - [Built With](#built-with)
 - [Features](#features)
-- [API](#API)
+- [pages](#pages)
 - [Contact](#contact)
 
 ### Built With
 
-- Node
-- Express
-- Mongodb
-- cors
-- dotenv
-- nodemon
+- React
+- React-router-dom
+- Material UI
+- Firebase
+- Context API
+- React Hook Form
+- Axios
 
 ## Features
 
-This node project is the backend of <a href="">BIRIDERPRO</a>. I have implemented crud operation through this node project. Please Look below to see the use of API endpoints of this project. I have used axios in the below example.
-
-## API
-
-<h3 align="center">READ MEHTODS OF CRUD</h3>
-<div>
-<p>Get all bikes from database</p>
-    <code>
-        axios.get('https://guarded-sierra-90712.herokuapp.com/bikes').then((response) => console.log(response.data));
-    </code>
-</div>
-
-<div>
-<p>Get a single bike info from database</p>
-    <code>
-        axios.get(`https://guarded-sierra-90712.herokuapp.com/bikes/${id}`).then((response) => console.log(response.data));
-    </code>
-</div>
-
-<div>
-<p>Get all the order info from database</p>
-    <code>
-        axios.get('https://guarded-sierra-90712.herokuapp.com/orders').then((response) => console.log(response.data));
-    </code>
-</div>
-
-<div>
-<p>Get a specific user order</p>
-    <code>
-        axios.get(`https://guarded-sierra-90712.herokuapp.com/order/${email}`).then((response) => console.log(response.data));
-    </code>
-</div>
-
-<h3 align="center">CREATE METHODS OF CRUD</h3>
-<div>
-<p>Create an order in database</p>
-    <code>
-        axios.post('https://guarded-sierra-90712.herokuapp.com/order', orderInfoObject).then((response) => console.log(response.data));
-    </code>
-</div>
-
-<div>
-<p>Create a bikes item in database</p>
-    <code>
-        axios.post('https://guarded-sierra-90712.herokuapp.com/bikes', bikesInfoObject).then((response) => console.log(response.data));
-    </code>
-</div>
-
-<h3 align="center">UPDATE MEHTODS OF CRUD</h3>
-<div>
-<p>Update an order status</p>
-    <code>
-        axios.put(`https://guarded-sierra-90712.herokuapp.com/order/${id}`).then((response) => console.log(response.data));
-    </code>
-</div>
-
-<h3 align="center">DELETE MEHTODS OF CRUD</h3>
-<div>
-<p>Delete an order</p>
-    <code>
-        axios.delete(`https://guarded-sierra-90712.herokuapp.com/order/${id}`).then((response) => console.log(response.data));
-    </code>
-</div>
+Biriderpro is a React app created for deliverying bikes to customers. It has an authentication system where a customer can register or sign in to use the full functionality of the website. But if the user is admin then he/she will see a completely different functionality of the website. A customer can order bikes from the website by providing some information. There are several pages in this website.
 
 ## Contact
 

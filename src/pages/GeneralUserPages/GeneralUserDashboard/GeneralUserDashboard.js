@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
 import { Switch, useRouteMatch } from 'react-router-dom';

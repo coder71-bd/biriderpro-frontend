@@ -1,5 +1,4 @@
-import { Grid } from '@material-ui/core';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import { lightBlue } from '@mui/material/colors';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
@@ -28,7 +27,10 @@ const Banner = () => {
           </Typography>
 
           <NavLink to="/explore">
-            <Button variant="contained" sx={{ my: 2 }}>
+            <Button
+              variant="contained"
+              sx={{ my: 2, textDecoration: 'none', color: 'white' }}
+            >
               Order Now
             </Button>
           </NavLink>
