@@ -3,7 +3,7 @@
 <div align="center">
   <h3>
   <!--add firebase hosting link here-->
-    <a href="">
+    <a href="https://biriderpro.web.app/">
       Live Demo
     </a>
   </h3>
@@ -29,20 +29,7 @@
 
 ## Features
 
-Foodly is a React app created for selling bikes to customers. It has an authentication system where a customer can register or sign in to use the website. If the user is genearal user then he/she can buy bikes from the website. But if the user is admin then he/she will see the admin functionality of the website.
-
-## pages
-
-- Home: main landing page of the website.
-- Foods: containing all foods to sell.
-- Place order: customer will give the order information here.
-- My order: customer can see his/her ordered food from here.
-- Manage all order: website admin can manage all ordered food from this page.
-- Add Food: website admin can add food to his database from this page.
-- About: About Foodly.
-- 404: A 404 page for non-existing pages.
-- login: customer can login via this page.
-- Register: customer can register via this page.
+Biriderpro is a React app created for selling bikes to customers. It has an authentication system where a customer can register or sign in to use the website. If the user is genearal user then he/she can buy bikes from the website. But if the user is admin then he/she will only see the admin functionality of the website.
 
 ## Contact
 
