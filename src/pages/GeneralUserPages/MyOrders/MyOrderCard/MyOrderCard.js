@@ -46,7 +46,7 @@ const MyOrderCard = ({ myOrder, handleCancelOrder }) => {
 
         <CardMedia
           component="img"
-          height="194"
+          sx={{ maxHeight: 300 }}
           image={bike.image}
           alt={bike.name}
         />

@@ -34,7 +34,11 @@ const UserReviews = () => {
                   sx={{ width: 72, height: 72 }}
                 />
                 <h2>{review.name}</h2>
-                <Rating name="read-only" value={review.rating} readOnly />
+                <Rating
+                  name="read-only"
+                  value={parseInt(review.rating)}
+                  readOnly
+                />
                 <Typography
                   variant="subtitle2"
                   sx={{ mb: 3, textAlign: 'center', maxWidth: 400 }}

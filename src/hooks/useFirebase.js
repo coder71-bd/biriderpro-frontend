@@ -97,7 +97,7 @@ const useFirebase = () => {
   const saveUser = (email, displayName) => {
     const user = { email, displayName };
 
-    axios.post('https://guarded-sierra-90712.herokuapp.com/users', user);
+    axios.put('https://guarded-sierra-90712.herokuapp.com/users', user);
   };
 
   return {

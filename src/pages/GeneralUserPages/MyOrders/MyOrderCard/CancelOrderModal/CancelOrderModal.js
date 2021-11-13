@@ -26,10 +26,15 @@ const DeleteOrderModal = ({ id, handleCancelOrder, cancelOrderButton }) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogContent>
-          <Alert severity="error">Do you want to delete order?</Alert>
+          <Alert severity="error">Do you want to delete this order?</Alert>
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" color="success" onClick={handleClose}>
+          <Button
+            variant="outlined"
+            color="success"
+            onClick={handleClose}
+            sx={{ mr: 2 }}
+          >
             No
           </Button>
           <div onClick={handleClose}>

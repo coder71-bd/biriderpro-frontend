@@ -1,8 +1,9 @@
-import { Button, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { Alert, Grid, Snackbar } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import MyOrderCard from './MyOrderCard/MyOrderCard';
 
@@ -27,15 +28,26 @@ const MyOrders = () => {
   // no bike ordered by user
   if (myOrders.length === 0) {
     return (
-      <Box>
+      <Box
+        sx={{
+          minHeight: 'calc(100vh - 220px)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          mt: 3,
+          flexDirection: 'column',
+        }}
+      >
         <Typography variant="h5">You haven't Ordered any bike yet.</Typography>
-        <Button variant="contained" className="submit__btn">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          Order Now
-        </Button>
+        <NavLink to="/explore">
+          <button className="submit__btn">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Order Now
+          </button>
+        </NavLink>
       </Box>
     );
   }
@@ -51,10 +63,15 @@ const MyOrders = () => {
   };
 
   return (
-    <>
-      <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+    <Box sx={{ minHeight: 'calc(100vh - 220px)', mt: 3 }}>
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={open}
+        autoHideDuration={5000}
+        onClose={handleClose}
+      >
         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-          Successfully cancel the order
+          Order successfully deleted
         </Alert>
       </Snackbar>
       <Grid container spacing={3}>
@@ -66,7 +83,7 @@ const MyOrders = () => {
           />
         ))}
       </Grid>
-    </>
+    </Box>
   );
 };
 

@@ -20,15 +20,15 @@ const OrderTableRow = ({ order, handleOrderShipping, handleRejectOrder }) => {
     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
       <TableCell>
         <Avatar
-          alt={bike.name}
-          src={bike.image}
+          alt={bike?.name}
+          src={bike?.image}
           sx={{ width: 56, height: 56 }}
         />
         <Typography
           variant="h6"
           sx={{ color: 'info.main', fontWeight: 'bold' }}
         >
-          ${bike.price}
+          ${bike?.price}
         </Typography>
       </TableCell>
 

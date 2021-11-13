@@ -8,6 +8,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
+import { Box } from '@mui/system';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import OrderTableRow from './OrderTableRow/OrderTableRow';
@@ -18,39 +19,40 @@ const ManageAllOrders = () => {
   useEffect(() => {
     axios
       .get('https://guarded-sierra-90712.herokuapp.com/orders')
-      .then((response) => {
-        console.log(response.data);
-        setOrders(response.data);
-      });
+      .then((response) => setOrders(response.data));
   }, []);
 
   if (orders.length === 0) {
-    return <CircularProgress />;
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <CircularProgress color="secondary" />
+      </Box>
+    );
   }
 
   const handleOrderShipping = (id) => {
-    console.log(id);
-    // axios
-    //   .put(`https://guarded-sierra-90712.herokuapp.com/order/${id}`)
-    //   .then(() => {
-    //     axios
-    //       .get('https://guarded-sierra-90712.herokuapp.com/order')
-    //       .then((response) => console.log(response.data));
-    //   });
+    axios
+      .put(`https://guarded-sierra-90712.herokuapp.com/order/${id}`)
+      .then((response) => {
+        if (response.data.modifiedCount === 1) {
+          axios
+            .get('https://guarded-sierra-90712.herokuapp.com/orders')
+            .then((response) => setOrders(response.data));
+        }
+      });
   };
 
   const handleRejectOrder = (id) => {
-    console.log(id);
-    // axios
-    //   .delete(`https://guarded-sierra-90712.herokuapp.com/order/${id}`)
-    //   .then(() => {
-    //     const filteredOrder = orders.filter((order) => order._id !== id);
-    //     setOrders(filteredOrder);
-    //   });
+    axios
+      .delete(`https://guarded-sierra-90712.herokuapp.com/orders/${id}`)
+      .then(() => {
+        const filteredOrder = orders.filter((order) => order._id !== id);
+        setOrders(filteredOrder);
+      });
   };
 
   return (
-    <>
+    <Box sx={{ mt: 3, minHeight: 'calc(100vh - 220px)' }}>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -86,19 +88,17 @@ const ManageAllOrders = () => {
           </TableHead>
           <TableBody>
             {orders.map((order) => (
-              <>
-                <OrderTableRow
-                  key={order._id}
-                  order={order}
-                  handleRejectOrder={handleRejectOrder}
-                  handleOrderShipping={handleOrderShipping}
-                />
-              </>
+              <OrderTableRow
+                key={order._id}
+                order={order}
+                handleRejectOrder={handleRejectOrder}
+                handleOrderShipping={handleOrderShipping}
+              />
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-    </>
+    </Box>
   );
 };
 

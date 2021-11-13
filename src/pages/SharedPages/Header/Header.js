@@ -11,17 +11,18 @@ import {
 } from '@mui/material';
 import { cyan, purple } from '@mui/material/colors';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
-import AdminHeader from '../../AdminPages/AdminHeader/AdminHeader';
 import Sidebar from './Sidebar/Sidebar';
 
 const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const { user, admin, logout } = useAuth();
+  const history = useHistory();
+
+  const { user, logout } = useAuth();
 
   const { width } = useWindowDimensions();
 
@@ -42,109 +43,105 @@ const Header = () => {
 
   const handleLogOut = () => {
     logout();
+    history.push('/login');
   };
 
   return (
-    <>
-      {admin ? (
-        <AdminHeader />
-      ) : (
-        <Box>
-          <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
-            <Alert
-              onClose={handleClose}
-              severity="success"
-              sx={{ width: '100%' }}
+    <Box>
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={open}
+        autoHideDuration={5000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          Successfully logged out
+        </Alert>
+      </Snackbar>
+      <AppBar
+        position="sticky"
+        color="transparent"
+        sx={{ backgroundColor: cyan['A100'] }}
+      >
+        <Toolbar>
+          {width < 980 && (
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+              onClick={toggleDrawer()}
             >
-              Successfully logged out
-            </Alert>
-          </Snackbar>
-          <AppBar
-            position="sticky"
-            color="transparent"
-            sx={{ backgroundColor: cyan['A100'] }}
+              <MenuIcon />
+            </IconButton>
+          )}
+          <Box
+            sx={{
+              display: 'flex',
+              flexGrow: 1,
+              alignItems: 'center',
+            }}
           >
-            <Toolbar>
-              {width < 980 && (
-                <IconButton
-                  size="large"
-                  edge="start"
-                  color="inherit"
-                  aria-label="menu"
-                  sx={{ mr: 2 }}
-                  onClick={toggleDrawer()}
-                >
-                  <MenuIcon />
-                </IconButton>
-              )}
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexGrow: 1,
-                  alignItems: 'center',
-                }}
+            <NavLink
+              to="/"
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ color: purple[500] }}
               >
-                <NavLink
-                  to="/"
-                  style={{ textDecoration: 'none', color: 'inherit' }}
-                >
-                  <Typography
-                    variant="h6"
-                    component="div"
-                    sx={{ color: purple[500] }}
+                BIRIDERPRO
+              </Typography>
+            </NavLink>
+            {width > 980 && (
+              <>
+                {user.email && (
+                  <NavLink
+                    to="/user"
+                    style={{
+                      textDecoration: 'none',
+                      color: 'inherit',
+                      marginTop: 4,
+                    }}
                   >
-                    BIRIDERPRO
-                  </Typography>
-                </NavLink>
-                {width > 980 && (
-                  <>
-                    {user.email && (
-                      <NavLink
-                        to="/user"
-                        style={{
-                          textDecoration: 'none',
-                          color: 'inherit',
-                          marginTop: 4,
-                        }}
-                      >
-                        <Button color="inherit" sx={{ ml: 3 }}>
-                          Dashboard
-                        </Button>
-                      </NavLink>
-                    )}
-                    <NavLink
-                      to="/explore"
-                      style={{
-                        textDecoration: 'none',
-                        color: 'inherit',
-                        marginTop: 4,
-                      }}
-                    >
-                      <Button color="inherit" sx={{ ml: 3 }}>
-                        Explore
-                      </Button>
-                    </NavLink>
-                  </>
+                    <Button color="inherit" sx={{ ml: 3 }}>
+                      Dashboard
+                    </Button>
+                  </NavLink>
                 )}
-              </Box>
-
-              {user.email ? (
-                <Button variant="outlined" color="error" onClick={handleLogOut}>
-                  Logout
-                </Button>
-              ) : (
-                <NavLink to="/login" style={{ textDecoration: 'none' }}>
-                  <Button variant="outlined" color="primary">
-                    Login
+                <NavLink
+                  to="/explore"
+                  style={{
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    marginTop: 4,
+                  }}
+                >
+                  <Button color="inherit" sx={{ ml: 3 }}>
+                    Explore
                   </Button>
                 </NavLink>
-              )}
-            </Toolbar>
-          </AppBar>
-          <Sidebar toggleDrawer={toggleDrawer} isDrawerOpen={isDrawerOpen} />
-        </Box>
-      )}
-    </>
+              </>
+            )}
+          </Box>
+
+          {user.email ? (
+            <Button variant="outlined" color="error" onClick={handleLogOut}>
+              Logout
+            </Button>
+          ) : (
+            <NavLink to="/login" style={{ textDecoration: 'none' }}>
+              <Button variant="outlined" color="primary">
+                Login
+              </Button>
+            </NavLink>
+          )}
+        </Toolbar>
+      </AppBar>
+      <Sidebar toggleDrawer={toggleDrawer} isDrawerOpen={isDrawerOpen} />
+    </Box>
   );
 };
 

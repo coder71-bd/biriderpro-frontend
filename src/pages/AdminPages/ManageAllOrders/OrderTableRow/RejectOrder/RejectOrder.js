@@ -1,4 +1,3 @@
-import { IconButton } from '@material-ui/core';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import {
   Alert,
@@ -6,6 +5,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
+  IconButton,
 } from '@mui/material';
 import { useState } from 'react';
 
@@ -31,10 +31,15 @@ const RejectOrder = ({ id, handleRejectOrder }) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogContent>
-          <Alert severity="error">Do you want to reject this order?</Alert>
+          <Alert severity="error">Do you want to delete this order?</Alert>
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" color="success" onClick={handleClose}>
+          <Button
+            sx={{ mr: 2 }}
+            variant="outlined"
+            color="success"
+            onClick={handleClose}
+          >
             No
           </Button>
           <div onClick={handleClose}>

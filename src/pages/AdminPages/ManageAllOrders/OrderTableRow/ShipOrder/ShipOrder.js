@@ -44,17 +44,24 @@ const ShipOrder = ({ id, handleOrderShipping }) => {
           <Alert severity="info">Do you want to ship the order?</Alert>
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" color="success" onClick={handleClose}>
+          <Button
+            sx={{ mr: 2 }}
+            variant="outlined"
+            color="success"
+            onClick={handleClose}
+          >
             No
           </Button>
-          <Button
-            variant="outlined"
-            color="error"
-            onClick={() => handleOrderShipping(id)}
-            autoFocus
-          >
-            Yes
-          </Button>
+          <div onClick={handleClose}>
+            <Button
+              variant="outlined"
+              color="error"
+              onClick={() => handleOrderShipping(id)}
+              autoFocus
+            >
+              Yes
+            </Button>
+          </div>
         </DialogActions>
       </Dialog>
     </>

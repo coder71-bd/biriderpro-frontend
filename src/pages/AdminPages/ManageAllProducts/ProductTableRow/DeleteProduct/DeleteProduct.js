@@ -1,13 +1,15 @@
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import {
   Alert,
   Button,
   Dialog,
   DialogActions,
   DialogContent,
+  IconButton,
 } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-const DeleteProduct = ({ id, handleDeleteProduct, deleteOrderButton }) => {
+const DeleteProduct = ({ id, handleDeleteProduct }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -16,8 +18,11 @@ const DeleteProduct = ({ id, handleDeleteProduct, deleteOrderButton }) => {
   return (
     <>
       {/* reject order button */}
-      <div onClick={handleOpen}>{deleteOrderButton}</div>
-
+      <div onClick={handleOpen}>
+        <IconButton>
+          <DeleteForeverIcon color="error" fontSize="large" />
+        </IconButton>
+      </div>
       {/* reject order popup */}
       <Dialog
         open={open}
@@ -26,10 +31,15 @@ const DeleteProduct = ({ id, handleDeleteProduct, deleteOrderButton }) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogContent>
-          <Alert severity="error">Do you want to delte this product?</Alert>
+          <Alert severity="error">Do you want to reject this order?</Alert>
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" color="success" onClick={handleClose}>
+          <Button
+            sx={{ mr: 3 }}
+            variant="outlined"
+            color="success"
+            onClick={handleClose}
+          >
             No
           </Button>
           <div onClick={handleClose}>

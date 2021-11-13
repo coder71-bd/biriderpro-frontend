@@ -12,7 +12,7 @@ const AdminHeader = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const history = useHistory();
 
-  const { logout } = useAuth();
+  const { logout, admin } = useAuth();
 
   const { width } = useWindowDimensions();
 
@@ -29,109 +29,116 @@ const AdminHeader = () => {
 
   const handleLogOut = () => {
     logout();
-    history.replace('/');
+    history.push('/login');
   };
 
   return (
-    <Box>
-      <AppBar
-        position="sticky"
-        color="transparent"
-        sx={{ backgroundColor: cyan['A100'] }}
-      >
-        <Toolbar>
-          {width < 980 && (
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-              onClick={toggleDrawer()}
-            >
-              <MenuIcon />
-            </IconButton>
-          )}
-          <Box
-            sx={{
-              display: 'flex',
-              flexGrow: 1,
-              alignItems: 'center',
-            }}
+    <>
+      {admin && (
+        <Box>
+          <AppBar
+            position="sticky"
+            color="transparent"
+            sx={{ backgroundColor: cyan['A100'] }}
           >
-            <NavLink
-              to="/"
-              style={{ textDecoration: 'none', color: 'inherit' }}
-            >
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ color: purple[500] }}
+            <Toolbar>
+              {width < 980 && (
+                <IconButton
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="menu"
+                  sx={{ mr: 2 }}
+                  onClick={toggleDrawer()}
+                >
+                  <MenuIcon />
+                </IconButton>
+              )}
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexGrow: 1,
+                  alignItems: 'center',
+                }}
               >
-                BIRIDERPRO
-              </Typography>
-            </NavLink>
-            {width > 980 && (
-              <>
                 <NavLink
-                  to="/makeadmin"
-                  style={{
-                    textDecoration: 'none',
-                    color: 'inherit',
-                    marginTop: 4,
-                  }}
+                  to="/"
+                  style={{ textDecoration: 'none', color: 'inherit' }}
                 >
-                  <Button color="inherit" sx={{ ml: 3 }}>
-                    Make Admin
-                  </Button>
+                  <Typography
+                    variant="h6"
+                    component="div"
+                    sx={{ color: purple[500] }}
+                  >
+                    BIRIDERPRO
+                  </Typography>
                 </NavLink>
-                <NavLink
-                  to="/addproduct"
-                  style={{
-                    textDecoration: 'none',
-                    color: 'inherit',
-                    marginTop: 4,
-                  }}
-                >
-                  <Button color="inherit" sx={{ ml: 3 }}>
-                    Add Product
-                  </Button>
-                </NavLink>
-                <NavLink
-                  to="/manageallorders"
-                  style={{
-                    textDecoration: 'none',
-                    color: 'inherit',
-                    marginTop: 4,
-                  }}
-                >
-                  <Button color="inherit" sx={{ ml: 3 }}>
-                    Manage All Orders
-                  </Button>
-                </NavLink>
-                <NavLink
-                  to="/manageallproducts"
-                  style={{
-                    textDecoration: 'none',
-                    color: 'inherit',
-                    marginTop: 4,
-                  }}
-                >
-                  <Button color="inherit" sx={{ ml: 3 }}>
-                    Manage All Products
-                  </Button>
-                </NavLink>
-              </>
-            )}
-          </Box>
+                {width > 980 && (
+                  <>
+                    <NavLink
+                      to="/makeadmin"
+                      style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                        marginTop: 4,
+                      }}
+                    >
+                      <Button color="inherit" sx={{ ml: 3 }}>
+                        Make Admin
+                      </Button>
+                    </NavLink>
+                    <NavLink
+                      to="/addproduct"
+                      style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                        marginTop: 4,
+                      }}
+                    >
+                      <Button color="inherit" sx={{ ml: 3 }}>
+                        Add Product
+                      </Button>
+                    </NavLink>
+                    <NavLink
+                      to="/manageallorders"
+                      style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                        marginTop: 4,
+                      }}
+                    >
+                      <Button color="inherit" sx={{ ml: 3 }}>
+                        Manage All Orders
+                      </Button>
+                    </NavLink>
+                    <NavLink
+                      to="/manageallproducts"
+                      style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                        marginTop: 4,
+                      }}
+                    >
+                      <Button color="inherit" sx={{ ml: 3 }}>
+                        Manage All Products
+                      </Button>
+                    </NavLink>
+                  </>
+                )}
+              </Box>
 
-          <Button variant="outlined" color="error" onClick={handleLogOut}>
-            Logout
-          </Button>
-        </Toolbar>
-      </AppBar>
-      <AdminSidebar toggleDrawer={toggleDrawer} isDrawerOpen={isDrawerOpen} />
-    </Box>
+              <Button variant="outlined" color="error" onClick={handleLogOut}>
+                Logout
+              </Button>
+            </Toolbar>
+          </AppBar>
+          <AdminSidebar
+            toggleDrawer={toggleDrawer}
+            isDrawerOpen={isDrawerOpen}
+          />
+        </Box>
+      )}
+    </>
   );
 };
 

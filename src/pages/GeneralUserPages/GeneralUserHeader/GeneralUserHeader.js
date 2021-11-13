@@ -31,7 +31,7 @@ const GeneralUserHeader = () => {
 
   const handleLogOut = () => {
     logout();
-    history.replace('/');
+    history.push('/login');
   };
 
   return (

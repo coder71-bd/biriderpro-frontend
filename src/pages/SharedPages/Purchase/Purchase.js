@@ -19,7 +19,7 @@ const Purchase = () => {
 
   const { id } = useParams();
   const history = useHistory();
-  const { user } = useAuth();
+  const { user, admin } = useAuth();
 
   useEffect(() => {
     axios
@@ -34,21 +34,28 @@ const Purchase = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    const order_time = new Date().toLocaleDateString();
-    const newOrder = { ...data, order_time, product_id: id };
-    console.log(newOrder);
-    // axios
-    //   .post('https://guarded-sierra-90712.herokuapp.com/orders', data)
-    //   .then((response) => {
-    //     history.push('/myorders');
-    //     console.log(response.data);
-    //     alert('review successfully added');
-    //   });
+    const order_time = new Date().toDateString();
+    const newOrder = {
+      name: user.displayName,
+      email: user.email,
+      order_time,
+      product_id: id,
+      ...data,
+    };
+    if (admin) {
+      alert("You're admin. you don't have to buy products");
+    } else {
+      axios
+        .post('https://guarded-sierra-90712.herokuapp.com/orders', newOrder)
+        .then(() => {
+          history.push('/user/myorders');
+        });
+    }
   };
 
   return (
     <>
-      <Header />
+      {!admin && <Header />}
       <Box
         sx={{
           display: 'flex',
@@ -74,11 +81,18 @@ const Purchase = () => {
                   ${bike.price}
                 </Typography>
               </CardContent>
-              <CardMedia component="img" image={bike.image} alt={bike.name} />
+              <CardMedia
+                component="img"
+                image={bike.image}
+                alt={bike.name}
+                sx={{
+                  maxHeight: 350,
+                }}
+              />
             </Card>
           </Grid>
-          <Grid item xs={12} md={6} sx={{ backgroundColor: 'blue' }}>
-            <div className="form__container">
+          <Grid item xs={12} md={6}>
+            <Box className="form__container" sx={{ mx: 'auto', width: '90%' }}>
               <Typography variant="h5">Add Product</Typography>
               <form onSubmit={handleSubmit(onSubmit)}>
                 {/* name of the user */}
@@ -104,7 +118,7 @@ const Purchase = () => {
                   />
                 </div>
 
-                {errors.desc && (
+                {errors.address && (
                   <Alert severity="error" variant="outlined">
                     {errors.address.message}
                   </Alert>
@@ -133,7 +147,7 @@ const Purchase = () => {
                   Purchase
                 </button>
               </form>
-            </div>
+            </Box>
           </Grid>
         </Grid>
       </Box>
