@@ -1,4 +1,4 @@
-import { green, lightBlue, pink, red } from '@mui/material/colors';
+import { cyan, green, lightBlue, pink, red } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -11,6 +11,9 @@ const theme = createTheme({
     },
     success: {
       main: green['A700'],
+    },
+    info: {
+      main: cyan[300],
     },
     logoutBtn: {
       main: red[700],

@@ -15,8 +15,12 @@ const Home = () => {
       <Banner />
       {/* bikes */}
       <Typography
-        variant="h5"
-        style={{ textAlign: 'center', margin: '20px 0' }}
+        variant="h4"
+        style={{
+          textAlign: 'center',
+          margin: '25px 0',
+          fontWeight: 'bold',
+        }}
       >
         Fetaured Bikes
       </Typography>
@@ -24,18 +28,21 @@ const Home = () => {
 
       {/* user reviews */}
       <Typography
-        variant="h5"
-        style={{ textAlign: 'center', margin: '20px 0' }}
+        variant="h4"
+        style={{
+          textAlign: 'center',
+          margin: '25px 0',
+          fontWeight: 'bold',
+        }}
       >
         Happy Customers Says
       </Typography>
       <UserReviews />
 
       {/* faqs */}
-
       <Typography
         variant="h5"
-        style={{ textAlign: 'center', margin: '20px 0' }}
+        style={{ textAlign: 'center', margin: '25px 0', fontWeight: 'bold' }}
       >
         Frequently Asked Questions
       </Typography>

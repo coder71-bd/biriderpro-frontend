@@ -55,11 +55,8 @@ body {
 }
 
 .submit__btn:hover {
-  background: #03e9f4;
-  color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 5px #03e9f4, 0 0 15px #03e9f4, 0 0 25px #03e9f4,
-    0 0 100px #03e9f4;
+  box-shadow: 0 0 5px #d50000, 0 0 15px #d50000, 0 0 25px #d50000,
+    0 0 100px #d50000;
 }
 
 .submit__btn span {
@@ -72,7 +69,7 @@ body {
   left: -100%;
   width: 100%;
   height: 4px;
-  background: linear-gradient(90deg, transparent, #03e9f4);
+  background: linear-gradient(90deg, transparent, #d50000);
   animation: btn-anim1 1s linear infinite;
 }
 
@@ -91,7 +88,7 @@ body {
   right: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, #03e9f4);
+  background: linear-gradient(180deg, transparent, #d50000);
   animation: btn-anim2 1s linear infinite;
   animation-delay: 0.25s;
 }
@@ -111,7 +108,7 @@ body {
   right: -100%;
   width: 100%;
   height: 4px;
-  background: linear-gradient(270deg, transparent, #03e9f4);
+  background: linear-gradient(270deg, transparent, #d50000);
   animation: btn-anim3 1s linear infinite;
   animation-delay: 0.5s;
 }
@@ -131,7 +128,7 @@ body {
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(360deg, transparent, #03e9f4);
+  background: linear-gradient(360deg, transparent, #d50000);
   animation: btn-anim4 1s linear infinite;
   animation-delay: 0.75s;
 }

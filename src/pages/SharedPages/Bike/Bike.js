@@ -1,9 +1,11 @@
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
+import StarIcon from '@mui/icons-material/Star';
 import {
   Button,
   CardActions,
   CardContent,
   CardMedia,
+  Rating,
   Typography,
 } from '@mui/material';
 import Card from '@mui/material/Card';
@@ -27,15 +29,21 @@ const Bikes = ({ bike }) => {
           gutterBottom
           variant="h5"
           component="div"
-          sx={{ color: 'info.main' }}
+          sx={{ color: 'primary.main' }}
         >
           {bike.name}
         </Typography>
 
-        <Typography sx={{ typography: 'subtitle2', mb: 3 }}>
+        <Rating
+          value={3}
+          readOnly
+          emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+        />
+
+        <Typography sx={{ typography: 'subtitle2', my: 2 }}>
           {bike.desc}
         </Typography>
-        <Typography variant="h5" sx={{ color: 'error.main' }}>
+        <Typography variant="h5" sx={{ color: 'info.main' }}>
           ${bike.price}
         </Typography>
       </CardContent>
@@ -43,7 +51,7 @@ const Bikes = ({ bike }) => {
         <Button
           className="submit__btn"
           variant="contained"
-          sx={{ backgroundColor: 'info.main' }}
+          sx={{ backgroundColor: 'primary.main' }}
           onClick={handleClick}
         >
           <span></span>
