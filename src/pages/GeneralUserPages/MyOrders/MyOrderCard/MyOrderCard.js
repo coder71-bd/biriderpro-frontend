@@ -57,14 +57,14 @@ const MyOrderCard = ({ myOrder, handleCancelOrder }) => {
             alignItems: 'center',
           }}
         >
-          <Typography variant="h6" color="primary">
+          <Typography variant="h6" sx={{ color: 'info.main' }}>
             ${bike.price}
           </Typography>
 
           <Typography variant="subtitle2">{bike.name}</Typography>
 
           {myOrder.status === 'pending' ? (
-            <Chip label={myOrder.status} color="warning" variant="outlined" />
+            <Chip label={myOrder.status} color="error" variant="outlined" />
           ) : (
             <Chip label={myOrder.status} color="success" variant="outlined" />
           )}

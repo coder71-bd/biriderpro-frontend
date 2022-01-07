@@ -73,11 +73,11 @@ const Purchase = () => {
                   gutterBottom
                   variant="h5"
                   component="div"
-                  sx={{ color: 'info.main' }}
+                  sx={{ color: 'primary.main' }}
                 >
                   {bike.name}
                 </Typography>
-                <Typography variant="h5" sx={{ color: 'error.main' }}>
+                <Typography variant="h5" sx={{ color: 'info.main' }}>
                   ${bike.price}
                 </Typography>
               </CardContent>
