@@ -9,7 +9,7 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
-import { cyan, purple } from '@mui/material/colors';
+import { deepOrange, purple } from '@mui/material/colors';
 import { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
@@ -61,7 +61,7 @@ const Header = () => {
       <AppBar
         position="sticky"
         color="transparent"
-        sx={{ backgroundColor: cyan['A100'] }}
+        sx={{ backgroundColor: deepOrange[200] }}
       >
         <Toolbar>
           {width < 980 && (
@@ -128,12 +128,21 @@ const Header = () => {
           </Box>
 
           {user.email ? (
-            <Button variant="outlined" color="error" onClick={handleLogOut}>
+            <Button
+              variant="contained"
+              color="logoutBtn"
+              onClick={handleLogOut}
+              sx={{ px: 3, borderRadius: 5, color: '#fff' }}
+            >
               Logout
             </Button>
           ) : (
             <NavLink to="/login" style={{ textDecoration: 'none' }}>
-              <Button variant="outlined" color="primary">
+              <Button
+                variant="contained"
+                color="success"
+                sx={{ px: { xs: 1, md: 3 }, borderRadius: 5, color: '#fff' }}
+              >
                 Login
               </Button>
             </NavLink>

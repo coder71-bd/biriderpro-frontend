@@ -1,16 +1,22 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
-import { lightBlue } from '@mui/material/colors';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import banner from '../../../../images/banner.jpg';
+import banner from '../../../../images/banner/banner.jpg';
+import bannerBg from '../../../../images/banner/bannerbg.png';
 
 const Banner = () => {
   return (
-    <Grid container>
+    <Grid
+      container
+      sx={{
+        background: `url(${bannerBg})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <Grid item xs={12} lg={6}>
         <Box
           sx={{
-            backgroundColor: lightBlue[100],
             width: '100%',
             height: '100%',
             display: 'flex',
@@ -19,25 +25,31 @@ const Banner = () => {
             alignItems: 'center',
           }}
         >
-          <Typography variant="h5" color="primary.main" sx={{ mt: 1 }}>
+          <Typography
+            variant="h4"
+            color="text.header"
+            sx={{ mt: 1, fontSize: { xs: 22, md: 32 } }}
+          >
             Welcome to BIRIDERPRO
           </Typography>
-          <Typography variant="subtitle2" sx={{ mt: 1 }}>
+          <Typography variant="subtitle1" sx={{ mt: 1 }}>
             Buy your favourite bikes with us
           </Typography>
 
-          <NavLink to="/explore">
-            <Button
-              variant="contained"
-              sx={{ my: 2, textDecoration: 'none', color: 'white' }}
-            >
+          <NavLink to="/explore" style={{ textDecoration: 'none' }}>
+            <Button variant="contained" sx={{ my: 2, color: 'white', px: 4 }}>
               Order Now
             </Button>
           </NavLink>
         </Box>
       </Grid>
-      <Grid item xs={12} lg={6}>
-        <img src={banner} alt="banner" width="100%" />
+      <Grid item xs={12} lg={6} sx={{ borderRadius: '50%', p: 2 }}>
+        <img
+          src={banner}
+          alt="banner"
+          width="100%"
+          style={{ borderRadius: '50%' }}
+        />
       </Grid>
     </Grid>
   );
