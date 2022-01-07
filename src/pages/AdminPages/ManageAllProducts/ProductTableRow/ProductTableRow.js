@@ -4,18 +4,18 @@ import DeleteProduct from './DeleteProduct/DeleteProduct';
 const ProductTableRow = ({ product, handleDeleteProduct }) => {
   return (
     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-      <TableCell align="left">
-        <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>
-          {product.name}
-        </Typography>
-      </TableCell>
-
       <TableCell>
         <Avatar
           alt={product.name}
           src={product.image}
           sx={{ width: 100, height: 100 }}
         />
+      </TableCell>
+
+      <TableCell align="center">
+        <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>
+          {product.name}
+        </Typography>
       </TableCell>
 
       <TableCell align="right">

@@ -6,7 +6,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
+  Typography
 } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios';
@@ -69,7 +69,7 @@ const ManageAllProducts = () => {
                 Product name
               </TableCell>
               <TableCell
-                align="left"
+                align="center"
                 sx={{ color: 'primary.main', fontWeight: 'bold' }}
               >
                 image

@@ -1,6 +1,6 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, Button, IconButton, Toolbar, Typography } from '@mui/material';
-import { cyan, purple } from '@mui/material/colors';
+import { deepOrange, purple } from '@mui/material/colors';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
@@ -39,7 +39,7 @@ const AdminHeader = () => {
           <AppBar
             position="sticky"
             color="transparent"
-            sx={{ backgroundColor: cyan['A100'] }}
+            sx={{ backgroundColor: deepOrange[200] }}
           >
             <Toolbar>
               {width < 980 && (
@@ -127,7 +127,12 @@ const AdminHeader = () => {
                 )}
               </Box>
 
-              <Button variant="outlined" color="error" onClick={handleLogOut}>
+              <Button
+                variant="contained"
+                color="logoutBtn"
+                onClick={handleLogOut}
+                sx={{ px: 3, borderRadius: 5, color: '#fff' }}
+              >
                 Logout
               </Button>
             </Toolbar>
