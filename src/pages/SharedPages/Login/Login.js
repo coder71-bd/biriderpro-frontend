@@ -1,6 +1,6 @@
 import { Alert, Box, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import Header from '../Header/Header';
 
@@ -14,10 +14,10 @@ const Login = () => {
   const { processSignIn, setAuthError, authError } = useAuth();
 
   const location = useLocation();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    processSignIn(data.email, data.password, location, history);
+    processSignIn(data.email, data.password, location, navigate);
   };
 
   const handleClose = () => {

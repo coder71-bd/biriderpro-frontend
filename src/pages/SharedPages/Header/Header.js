@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { deepOrange, purple } from '@mui/material/colors';
 import { useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import Sidebar from './Sidebar/Sidebar';
@@ -20,7 +20,7 @@ const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { user, logout } = useAuth();
 
@@ -43,7 +43,7 @@ const Header = () => {
 
   const handleLogOut = () => {
     logout();
-    history.push('/login');
+    navigate('/login');
   };
 
   return (

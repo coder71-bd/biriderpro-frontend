@@ -1,10 +1,9 @@
-import { Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Container, Typography } from '@mui/material';
 import React from 'react';
 
 const Pay = () => {
   return (
-    <Box
+    <Container
       sx={{
         minHeight: 'calc(100vh - 220px)',
         display: 'flex',
@@ -21,7 +20,7 @@ const Pay = () => {
         sx={{ mb: 3 }}
       />
       <Typography variant="h5">payment options coming soon</Typography>
-    </Box>
+    </Container>
   );
 };
 

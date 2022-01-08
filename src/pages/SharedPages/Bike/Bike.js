@@ -9,12 +9,12 @@ import {
   Typography,
 } from '@mui/material';
 import Card from '@mui/material/Card';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Bikes = ({ bike }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const handleClick = () => {
-    history.push(`/purchase/${bike._id}`);
+    navigate(`/purchase/${bike._id}`);
   };
   return (
     <Card sx={{ maxWidth: 375, mx: 'auto' }}>

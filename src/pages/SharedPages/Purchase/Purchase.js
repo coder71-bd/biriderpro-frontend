@@ -4,21 +4,21 @@ import {
   CardContent,
   CardMedia,
   Grid,
-  Typography,
+  Typography
 } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import Header from '../Header/Header';
 
 const Purchase = () => {
   const [bike, setBike] = useState({});
+  const navigate = useNavigate()
 
   const { id } = useParams();
-  const history = useHistory();
   const { user, admin } = useAuth();
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const Purchase = () => {
       axios
         .post('https://guarded-sierra-90712.herokuapp.com/orders', newOrder)
         .then(() => {
-          history.push('/user/myorders');
+         navigate('/user/myorders');
         });
     }
   };

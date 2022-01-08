@@ -1,6 +1,6 @@
 import { Alert, Box, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import Header from '../Header/Header';
 
@@ -13,7 +13,7 @@ const Register = () => {
 
   const { processSignUp, setAuthError, authError } = useAuth();
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     if (data.password1 !== data.password2) {
@@ -21,7 +21,7 @@ const Register = () => {
       return;
     }
 
-    processSignUp(data.email, data.password1, data.name, history);
+    processSignUp(data.email, data.password1, data.name, navigate);
   };
 
   const handleClose = () => {

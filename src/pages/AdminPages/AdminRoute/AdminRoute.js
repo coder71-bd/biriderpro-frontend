@@ -1,11 +1,13 @@
 import { CircularProgress } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
-const AdminRoute = ({ children, ...rest }) => {
-  const { user, admin, isLoading } = useAuth();
+const AdminRoute = ({ children }) => {
+  const location = useLocation();
+
+  const { admin, user, isLoading } = useAuth();
 
   if (isLoading) {
     return (
@@ -15,22 +17,10 @@ const AdminRoute = ({ children, ...rest }) => {
     );
   }
 
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        user.email && (admin || !isLoading) ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/',
-              state: { from: location },
-            }}
-          />
-        )
-      }
-    />
+  return user.email && (admin || !isLoading) ? (
+    children
+  ) : (
+    <Navigate to="/login" state={{ from: location }} />
   );
 };
 

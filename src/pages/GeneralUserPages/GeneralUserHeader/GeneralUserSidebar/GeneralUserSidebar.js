@@ -1,8 +1,7 @@
 import { Box, Drawer, List, ListItem, ListItemText } from '@mui/material';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const GeneralUserSidebar = ({ toggleDrawer, isDrawerOpen }) => {
-  let { url } = useRouteMatch();
   return (
     <Drawer open={isDrawerOpen} onClose={toggleDrawer()}>
       <Box
@@ -12,16 +11,13 @@ const GeneralUserSidebar = ({ toggleDrawer, isDrawerOpen }) => {
       >
         <List>
           <ListItem button sx={{ px: 7 }}>
-            <Link
-              to={`${url}`}
-              style={{ textDecoration: 'none', color: 'black' }}
-            >
+            <Link to="/user" style={{ textDecoration: 'none', color: 'black' }}>
               <ListItemText>Home</ListItemText>
             </Link>
           </ListItem>
           <ListItem button sx={{ px: 7 }}>
             <Link
-              to={`${url}/pay`}
+              to="/user/pay"
               style={{ textDecoration: 'none', color: 'black' }}
             >
               <ListItemText>Pay</ListItemText>
@@ -29,7 +25,7 @@ const GeneralUserSidebar = ({ toggleDrawer, isDrawerOpen }) => {
           </ListItem>
           <ListItem button sx={{ px: 7 }}>
             <Link
-              to={`${url}/myorders`}
+              to="/user/myorders"
               style={{ textDecoration: 'none', color: 'black' }}
             >
               <ListItemText>My Orders</ListItemText>
@@ -37,7 +33,7 @@ const GeneralUserSidebar = ({ toggleDrawer, isDrawerOpen }) => {
           </ListItem>
           <ListItem button sx={{ px: 7 }}>
             <Link
-              to={`${url}/addreview`}
+              to="/user/addreview"
               style={{ textDecoration: 'none', color: 'black' }}
             >
               <ListItemText>Add Review</ListItemText>

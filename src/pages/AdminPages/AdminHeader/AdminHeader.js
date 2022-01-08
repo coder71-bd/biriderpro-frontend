@@ -3,14 +3,14 @@ import { AppBar, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import { deepOrange, purple } from '@mui/material/colors';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import AdminSidebar from './AdminSidebar/AdminSidebar';
 
 const AdminHeader = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { logout, admin } = useAuth();
 
@@ -29,7 +29,7 @@ const AdminHeader = () => {
 
   const handleLogOut = () => {
     logout();
-    history.push('/login');
+    navigate('/login');
   };
 
   return (

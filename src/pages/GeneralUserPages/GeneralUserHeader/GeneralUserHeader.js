@@ -3,18 +3,16 @@ import { AppBar, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import { deepOrange, purple } from '@mui/material/colors';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
-import { NavLink, useHistory, useRouteMatch } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import GeneralUserSidebar from './GeneralUserSidebar/GeneralUserSidebar';
 
 const GeneralUserHeader = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { logout } = useAuth();
-
-  let { url } = useRouteMatch();
 
   const { width } = useWindowDimensions();
 
@@ -31,7 +29,7 @@ const GeneralUserHeader = () => {
 
   const handleLogOut = () => {
     logout();
-    history.push('/login');
+    navigate('/login');
   };
 
   return (
@@ -76,7 +74,7 @@ const GeneralUserHeader = () => {
             {width > 980 && (
               <>
                 <NavLink
-                  to={`${url}`}
+                  to="/user"
                   style={{
                     textDecoration: 'none',
                     color: 'inherit',
@@ -88,7 +86,7 @@ const GeneralUserHeader = () => {
                   </Button>
                 </NavLink>
                 <NavLink
-                  to={`${url}/pay`}
+                  to="/user/pay"
                   style={{
                     textDecoration: 'none',
                     color: 'inherit',
@@ -100,7 +98,7 @@ const GeneralUserHeader = () => {
                   </Button>
                 </NavLink>
                 <NavLink
-                  to={`${url}/myorders`}
+                  to="/user/myorders"
                   style={{
                     textDecoration: 'none',
                     color: 'inherit',
@@ -112,7 +110,7 @@ const GeneralUserHeader = () => {
                   </Button>
                 </NavLink>
                 <NavLink
-                  to={`${url}/addreview`}
+                  to="/user/addreview"
                   style={{
                     textDecoration: 'none',
                     color: 'inherit',

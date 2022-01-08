@@ -22,7 +22,7 @@ const useFirebase = () => {
   const auth = getAuth();
 
   //REGISTRATION PROCESS OF USER
-  const processSignUp = (email, password, name, history) => {
+  const processSignUp = (email, password, name, navigate) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
@@ -41,7 +41,7 @@ const useFirebase = () => {
         })
           .then(() => {})
           .catch((error) => setAuthError(error.message));
-        history.replace('/');
+        navigate('/');
       })
       .catch((error) => {
         setAuthError(error.message);
@@ -51,13 +51,13 @@ const useFirebase = () => {
   };
 
   //USER LOGIN PROCESS
-  const processSignIn = (email, password, location, history) => {
+  const processSignIn = (email, password, location, navigate) => {
     setIsLoading(true);
 
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         const redirect_uri = location?.state?.from || '/';
-        history.replace(redirect_uri);
+        navigate(redirect_uri);
         setAuthError('');
       })
       .catch((error) => setAuthError(error.message))
