@@ -1,4 +1,4 @@
-import { cyan, green, lightBlue, pink, red } from '@mui/material/colors';
+import { cyan, green, indigo, lightBlue, red } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -7,7 +7,7 @@ const theme = createTheme({
       main: red[500],
     },
     secondary: {
-      main: pink['A700'],
+      main: indigo['500'],
     },
     success: {
       main: green['A700'],

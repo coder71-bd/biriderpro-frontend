@@ -1,6 +1,6 @@
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import { Button, Grid, Stack, TextField, Typography } from '@mui/material';
-import { cyan, deepOrange, purple, red } from '@mui/material/colors';
+import { indigo } from '@mui/material/colors';
 import { Box } from '@mui/system';
 import React from 'react';
 import appstore from '../../../images/appstore.png';
@@ -12,14 +12,21 @@ const Footer = () => {
       <Box
         sx={{
           flexGrow: 1,
-          backgroundColor: red[500],
+          backgroundColor: indigo[900],
           p: 3,
         }}
       >
         <Grid container spacing={4} sx={{ color: '#fff' }}>
           <Grid item xs={12} sm={12} md={6}>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Button variant="contained" color="info" sx={{ p: 2 }}>
+              <Button
+                variant="contained"
+                sx={{
+                  padding: '19px',
+                  backgroundColor: 'white',
+                  color: 'black',
+                }}
+              >
                 <MailOutlineIcon />
               </Button>
               <TextField
@@ -28,7 +35,7 @@ const Footer = () => {
                 sx={{
                   borderRadius: 'none',
                   width: '80%',
-                  border: `2px solid ${cyan[300]}`,
+                  border: `2px solid white`,
                   outline: 0,
                 }}
               />
@@ -52,7 +59,7 @@ const Footer = () => {
           </Grid>
         </Grid>
       </Box>
-      <Grid container sx={{ backgroundColor: deepOrange[200] }}>
+      <Grid container sx={{ backgroundColor: indigo[500], py: 7 }}>
         <Grid
           item
           xs={5}
@@ -62,13 +69,13 @@ const Footer = () => {
             alignItems: 'center',
           }}
         >
-          <Typography variant="h5" sx={{ color: purple[500], pt: 3 }}>
+          <Typography variant="h5" sx={{ color: 'white', pt: 3 }}>
             BIRIDERPRO
           </Typography>
         </Grid>
         <Grid item xs={7}>
           <Stack
-            direction="column"
+            direction="row"
             alignItems="center"
             justifyContent="center"
             spacing={2}

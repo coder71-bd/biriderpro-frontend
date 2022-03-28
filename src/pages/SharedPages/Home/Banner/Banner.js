@@ -2,18 +2,10 @@ import { Box, Button, Grid, Typography } from '@mui/material';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import banner from '../../../../images/banner/banner.jpg';
-import bannerBg from '../../../../images/banner/bannerbg.png';
 
 const Banner = () => {
   return (
-    <Grid
-      container
-      sx={{
-        background: `url(${bannerBg})`,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-      }}
-    >
+    <Grid container>
       <Grid item xs={12} lg={6}>
         <Box
           sx={{
@@ -28,9 +20,12 @@ const Banner = () => {
           <Typography
             variant="h4"
             color="text.header"
-            sx={{ mt: 1, fontSize: { xs: 22, md: 32 } }}
+            sx={{
+              mt: 1,
+              fontSize: { xs: 22, md: 32 },
+            }}
           >
-            Welcome to BIRIDERPRO
+            Welcome To BIRIDERPRO
           </Typography>
           <Typography variant="subtitle1" sx={{ mt: 1 }}>
             Buy your favourite bikes with us
@@ -43,13 +38,8 @@ const Banner = () => {
           </NavLink>
         </Box>
       </Grid>
-      <Grid item xs={12} lg={6} sx={{ borderRadius: '50%', p: 2 }}>
-        <img
-          src={banner}
-          alt="banner"
-          width="100%"
-          style={{ borderRadius: '50%' }}
-        />
+      <Grid item xs={12} lg={6}>
+        <img src={banner} alt="banner" width="100%" />
       </Grid>
     </Grid>
   );

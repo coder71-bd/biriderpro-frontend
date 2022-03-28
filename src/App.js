@@ -1,3 +1,4 @@
+import { Box } from '@mui/system';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './context/AuthProvider/AuthProvider';
 import AddProduct from './pages/AdminPages/AddProduct/AddProduct';
@@ -21,70 +22,72 @@ import Register from './pages/SharedPages/Register/Register';
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <AdminHeader />
-        <Routes>
-          <Route path="explore" element={<Explore />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/purchase/:id"
-            element={
-              <PrivateRoute>
-                <Purchase />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/addproduct"
-            element={
-              <AdminRoute>
-                <AddProduct />
-              </AdminRoute>
-            }
-          />
-          <Route
-            path="/makeadmin"
-            element={
-              <AdminRoute>
-                <MakeAdmin />
-              </AdminRoute>
-            }
-          />
-          <Route
-            path="/manageallorders"
-            element={
-              <AdminRoute>
-                <ManageAllOrders />
-              </AdminRoute>
-            }
-          />
-          <Route
-            path="/manageallproducts"
-            element={
-              <AdminRoute>
-                <ManageAllProducts />
-              </AdminRoute>
-            }
-          />
-          <Route
-            path="user"
-            element={
-              <GeneralUserRoute>
-                <GeneralUserDashboard />
-              </GeneralUserRoute>
-            }
-          >
-            <Route path="pay" element={<Pay />} />
-            <Route path="myorders" element={<MyOrders />} />
-            <Route path="addreview" element={<AddReview />} />
-          </Route>
-          <Route path="/" element={<Home />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </AuthProvider>
+    <Box sx={{ fontFamily: 'Fira Sans' }}>
+      <AuthProvider>
+        <Router>
+          <AdminHeader />
+          <Routes>
+            <Route path="explore" element={<Explore />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/purchase/:id"
+              element={
+                <PrivateRoute>
+                  <Purchase />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/addproduct"
+              element={
+                <AdminRoute>
+                  <AddProduct />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/makeadmin"
+              element={
+                <AdminRoute>
+                  <MakeAdmin />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/manageallorders"
+              element={
+                <AdminRoute>
+                  <ManageAllOrders />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/manageallproducts"
+              element={
+                <AdminRoute>
+                  <ManageAllProducts />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="user"
+              element={
+                <GeneralUserRoute>
+                  <GeneralUserDashboard />
+                </GeneralUserRoute>
+              }
+            >
+              <Route path="pay" element={<Pay />} />
+              <Route path="myorders" element={<MyOrders />} />
+              <Route path="addreview" element={<AddReview />} />
+            </Route>
+            <Route path="/" element={<Home />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </AuthProvider>
+    </Box>
   );
 }
 

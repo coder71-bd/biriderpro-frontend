@@ -1,6 +1,6 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, Button, IconButton, Toolbar, Typography } from '@mui/material';
-import { deepOrange, purple } from '@mui/material/colors';
+import { indigo } from '@mui/material/colors';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -39,7 +39,7 @@ const AdminHeader = () => {
           <AppBar
             position="sticky"
             color="transparent"
-            sx={{ backgroundColor: deepOrange[200] }}
+            sx={{ backgroundColor: indigo[500], color: 'white' }}
           >
             <Toolbar>
               {width < 980 && (
@@ -63,13 +63,9 @@ const AdminHeader = () => {
               >
                 <NavLink
                   to="/"
-                  style={{ textDecoration: 'none', color: 'inherit' }}
+                  style={{ textDecoration: 'none', color: 'white' }}
                 >
-                  <Typography
-                    variant="h6"
-                    component="div"
-                    sx={{ color: purple[500] }}
-                  >
+                  <Typography variant="h6" component="div">
                     BIRIDERPRO
                   </Typography>
                 </NavLink>
@@ -131,7 +127,7 @@ const AdminHeader = () => {
                 variant="contained"
                 color="logoutBtn"
                 onClick={handleLogOut}
-                sx={{ px: 3, borderRadius: 5, color: '#fff' }}
+                sx={{ px: 3, color: '#fff' }}
               >
                 Logout
               </Button>

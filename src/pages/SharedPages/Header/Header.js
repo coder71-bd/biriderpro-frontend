@@ -9,7 +9,7 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
-import { deepOrange, purple } from '@mui/material/colors';
+import { indigo } from '@mui/material/colors';
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
@@ -61,7 +61,7 @@ const Header = () => {
       <AppBar
         position="sticky"
         color="transparent"
-        sx={{ backgroundColor: deepOrange[200] }}
+        sx={{ backgroundColor: indigo[500], color: 'white' }}
       >
         <Toolbar>
           {width < 980 && (
@@ -83,15 +83,8 @@ const Header = () => {
               alignItems: 'center',
             }}
           >
-            <NavLink
-              to="/"
-              style={{ textDecoration: 'none', color: 'inherit' }}
-            >
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ color: purple[500] }}
-              >
+            <NavLink to="/" style={{ textDecoration: 'none', color: 'white' }}>
+              <Typography variant="h6" component="div">
                 BIRIDERPRO
               </Typography>
             </NavLink>
@@ -130,9 +123,8 @@ const Header = () => {
           {user.email ? (
             <Button
               variant="contained"
-              color="logoutBtn"
               onClick={handleLogOut}
-              sx={{ px: 3, borderRadius: 5, color: '#fff' }}
+              sx={{ px: 3, color: '#fff' }}
             >
               Logout
             </Button>
@@ -141,7 +133,7 @@ const Header = () => {
               <Button
                 variant="contained"
                 color="success"
-                sx={{ px: { xs: 1, md: 3 }, borderRadius: 5, color: '#fff' }}
+                sx={{ px: { xs: 1, md: 3 }, color: '#fff' }}
               >
                 Login
               </Button>
